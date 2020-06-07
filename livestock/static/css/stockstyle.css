@@ -1,0 +1,86 @@
+
+.siteheader{
+  font-family: 'Roboto', sans-serif;
+
+}
+
+.stock-text{
+  font-family: 'Roboto', sans-serif;
+}
+
+.stock-message{
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.stocksidebar{
+
+  font-family: 'Roboto', sans-serif;
+  height: 100% ;
+  position: fixed;
+
+}
+#cardstyle{
+  width:100%;
+  height:300px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+
+}
+
+#cardstyle:hover{
+
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.maincontent{
+  margin-right: 250px;
+ font-size: 28px;
+ padding: 0px 10px;
+}
+.sidenav {
+  height: 100%;
+  width: 240px;
+  position: fixed;
+  margin-top:20px;
+  right:0;
+  z-index: 1;
+  top: 0;
+
+  background-color: #bfbcbb;
+  overflow-x: hidden;
+  padding-top: 100px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #000000;
+  display: block;
+}
+.sidenav a:hover {
+  color: #3e4447;
+}
+
+.stockthumbnail{
+  height: 100%;
+  width: 360px;
+  position: fixed;
+  margin-top:20px;
+  left: inherit;
+  z-index: 1;
+  top: 20px;
+  padding-top: 60px;
+}
+
+.mainstockdetail{
+  margin-left: 370px;
+ font-size: 28px;
+ padding: 0px 10px;
+}

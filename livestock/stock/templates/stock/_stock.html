@@ -1,0 +1,78 @@
+<!-- <div class="stock media stock-text">
+  <div class="media-body">
+    <div class="jumbotron"> -->
+      <!-- <h2 class="mb-2 align-items-center justify-content-between" align:'center';>{{ stock.name }}</h2> -->
+      <!-- <div class="row"> -->
+         <!-- <div class="shadow-lg bg-white rounded"> -->
+         <!-- <div class="container"> -->
+
+        <div class="stockthumbnail container-fluid">
+          <img src="{{ stock.image.url }}" alt="{{ stock.name }}" style='width:100%; height:240;'>
+
+        </div>
+      <!-- </div> -->
+
+        <div class="mainstockdetail">
+          <div class="shadow-lg p-3 mb-5 bg-white rounded">
+          <table class="table">
+            <tbody>
+              <tr><strong>
+                <th scope="col">Item</th>
+                <th scope="col">{{ stock.name }}</th>
+                </strong>
+              </tr>
+              <tr>
+                <th scope="col">Breed</th>
+                <th scope="col">{{ stock.breed }}</th>
+              </tr>
+              <tr>
+                <th scope="col">Category</th>
+                <th scope="col">{{ stock.category }}</th>
+              </tr>
+              <tr>
+                <th scope="col">Minimum Order</th>
+                <th scope="col">{{ stock.minimum_order }} {{ stock.unit }}</th>
+              </tr>
+              <tr>
+                <th scope="col">Rate </th>
+                <th scope="col">{{ stock.rate }} /{{ stock.per_unit }}</th>
+              </tr>
+              <tr>
+                <th scope="col">Available Locations</th>
+                <!-- {% for value in stock.location.value %} -->
+                <th scope="col">{{ stock.location  }}</th>
+                <!-- {% endfor %} -->
+              </tr>
+              <tr>
+                <th scope="col">Delivery Within</th>
+                <th scope="col">{{ stock.delivery_within }} {{ stock.deliverytimechoice }}</th>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+
+
+
+          <div class="jumbotron">
+              <h4 class="stock-message"><i>"{{ stock.sellers_message }}"</i></h4>
+                <p align='right'>-{{ stock.sellername }}</p>
+          </div>
+          <div class="container">
+            <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              More Details....
+            </button>
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+              {{ stock.more_details }}
+            </div>
+          </div>
+          </div>
+        </div>
+
+      <!-- </div> -->
+
+    <!-- </div> -->
+
+  <!-- </div>
+
+</div> -->

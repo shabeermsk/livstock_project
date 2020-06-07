@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container-fluid">
+     <div class="row">
+
+       <nav class="col-md-2 d-none d-md-block bg-light sidebar stocksidebar">
+         <div class="shadow-lg p-3 mb-5 bg-white rounded">
+         <div class="sidebar-sticky">
+           <ul class="nav flex-column ">
+             <li class="nav-item">
+                {% block current-dashboard %}<a class="nav-link" href="{% url 'dashboard' %}">
+                  <span data-feather="home"></span>
+                  Dashboard</a>{% endblock %}
+             </li>
+             <li class="nav-item">
+               <a class="nav-link" href="#">
+                 <span data-feather="file"></span>
+                 Orders{% block current-order %}{% endblock %}
+               </a>
+             </li>
+             <li class="nav-item">
+                {% block current-mystocks %}<a class="nav-link" href="{% url 'stock:user-stocks' user.username %}">
+                  <span data-feather="shopping-cart"></span>My Stocks</a>{% endblock %}
+             </li>
+             <li class="nav-item">
+               <a class="nav-link" href="#">
+                 <span data-feather="users"></span>
+                 Customers{% block current-customers %}{% endblock %}
+               </a>
+             </li>
+             <li class="nav-item">
+               <a class="nav-link" href="#">
+                 <span data-feather="bar-chart-2"></span>
+                 Reports{% block current-reports %}{% endblock %}
+               </a>
+             </li>
+            </ul>
+          </div>
+          </div>
+        </nav>
+
+         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+           {% block mainblock %}{% endblock %}
+          </main>
+        </div>
+      </div>
+
+{% endblock %}

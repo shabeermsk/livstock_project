@@ -1,0 +1,72 @@
+{% extends 'seller/dashboard_base.html' %}
+
+{% block current-mystocks %}<a class="nav-link active" href="{% url 'stock:user-stocks' user.username %}">
+  <span data-feather="shopping-cart"></span>My Stocks</a>
+{% endblock %}
+
+{% block mainblock %}
+<form method="post" enctype="multipart/form-data">{% csrf_token %}
+  {{ form.non_field_errors }}
+  <div class="fieldWrapper">
+    {{ form.name.errors }}
+    <label > Item Name : </label>
+    {{ form.name }}
+  </div>
+  <div class="fieldWrapper">
+    {{ form.breed.errors }}
+    <label > Breed Name : </label>
+    {{ form.breed }}
+  </div>
+  <div class="fieldWrapper">
+    {{ form.category.errors }}
+    <label > Category : </label>
+    {{ form.category }}
+  </div>
+  <div class="fieldWrapper">
+    {{ form.minimum_order.errors }}
+    <label > Minimum Order : </label>
+    {{ form.minimum_order }}
+    {{ form.unit.errors }}
+    <label > Unit</label>
+    {{ form.unit }}
+  </div>
+  <div class="fieldWrapper">
+    {{ form.rate.errors }}
+    <label > Rate ₹ : </label>
+    {{ form.rate }}
+    {{ form.per_unit.errors }}
+    <label > / </label>
+    {{ form.per_unit }}
+  </div>
+  <div class="fieldWrapper">
+    {{ form.location.errors }}
+    <label > Select The Locations You Can Deliver : </label>
+    {{ form.location }}
+  </div>
+  <div class="fieldWrapper">
+    {{ form.delivery_within.errors }}
+    <label > Delivery within: </label>
+    {{ form.delivery_within }}
+    {{ form.deliverytimechoice.errors }}
+    <label >  </label>
+    {{ form.deliverytimechoice }}
+  </div>
+  <div class="fieldWrapper">
+    {{ form.image.errors }}
+    <label > Thumbnail Image : </label>
+    {{ form.image }}
+  </div>
+  <div class="fieldWrapper">
+    {{ form.sellers_message.errors }}
+    <label> Seller's Message : </label>
+    {{ form.sellers_message }}
+  </div>
+  <div class="fieldWrapper">
+    {{ form.more_details.errors }}
+    <label> More Details : </label>
+    {{ form.more_details }}
+  </div>
+  <input class="btn btn-primary" type="submit" value="Save">
+</form>
+
+{% endblock %}

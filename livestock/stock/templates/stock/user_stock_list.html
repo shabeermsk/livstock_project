@@ -1,0 +1,49 @@
+{% extends 'seller/dashboard_base.html' %}
+{% block current-mystocks %}<a class="nav-link active" href="{% url 'stock:user-stocks' user.username %}">
+  <span data-feather="shopping-cart"></span>My Stocks</a>
+{% endblock %}
+
+{% block mainblock %}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <a href="{% url 'stock_create' %}">
+    <button type="button" class="btn btn-primary btn-lg">Add Stock<span class="material-icons">
+     add_box
+   </span></button>
+ </div>
+     <br>
+
+
+
+
+ <div class="row">
+   {% for stock in stocks %}
+   <div class="col-md-4 col-sm-12 col-lg-3 ">
+     <div class="shadow-lg p-3 mb-5 bg-white rounded">
+           <a href="{% url 'stock:user-stock-detail' username=user.username slug=stock.slug %}">
+           <div class="card" style='width:100%; height:300px;'>
+             <img src="{{ stock.image.url }}"  class="card-img-top" alt="{{ stock.name }}" style='width:100%; height:180px;'>
+                   <div class="card-body">
+                     <h5 class="card-title"> {{ stock.name }}</h5>
+                     <p class="card-text">sold by : {{ stock.user }}</p>
+                   </div></a>
+
+               <div class='card-footer text-center'>
+                  <a href="{% url 'stock:update' slug=stock.slug %}">
+                  <button type="button" class="btn btn-secondary">
+                    Update</button></a>
+                  <a href="{% url 'stock:delete' slug=stock.slug %}">
+                    <button type="button" name="button" class="btn btn-danger">
+                    Delete</button>
+                  </a>
+
+               </div>
+
+            </div>
+     </div>
+      </div>
+     {% endfor %}
+
+
+</div>
+{% endblock %}

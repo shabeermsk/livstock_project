@@ -1,0 +1,20 @@
+{% extends 'seller/dashboard_base.html' %}
+
+{% block current-mystocks %}<a class="nav-link active" href="{% url 'stock:user-stocks' user.username %}">
+  <span data-feather="shopping-cart"></span>My Stocks</a>
+{% endblock %}
+
+{% block mainblock %}
+<br>
+<a href="{% url 'stock:update' slug=stock.slug %}">
+<button type="button" class="btn btn-secondary">
+  Update</button></a>
+<a href="{% url 'stock:delete' slug=stock.slug %}">
+  <button type="button" name="button" class="btn btn-danger">
+  Delete</button>
+</a>
+<br>
+
+
+{% include 'stock/_stock.html' %}
+{% endblock %}

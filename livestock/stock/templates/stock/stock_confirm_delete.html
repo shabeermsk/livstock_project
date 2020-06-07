@@ -1,0 +1,40 @@
+{% extends 'seller/dashboard_base.html' %}
+
+{% block current-mystocks %}<a class="nav-link active" href="{% url 'stock:user-stocks' user.username %}">
+  <span data-feather="shopping-cart"></span>My Stocks</a>
+{% endblock %}
+
+{% block mainblock %}
+<br>
+<a href="{% url 'stock:update' slug=stock.slug %}">
+<button type="button" class="btn btn-secondary">
+  Update</button></a>
+<a href="{% url 'stock:delete' slug=stock.slug %}">
+  <button type="button" name="button" class="btn btn-danger">
+  Delete</button>
+</a>
+<br>
+{% include 'stock/_stock.html' %}
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Confirm Delete !</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post">{% csrf_token %}
+        Are you sure you want to delete this stock ?
+      </div>
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <input class="btn btn-danger" type="submit" value="Confirm">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

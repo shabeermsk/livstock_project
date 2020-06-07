@@ -1,0 +1,27 @@
+{% extends 'seller/dashboard_base.html' %}
+
+{% block current-dashboard %}<a class="nav-link active" href="{% url 'dashboard' %}">
+  <span data-feather="home"></span>
+  Dashboard</a>{% endblock %}
+
+{% block mainblock %}
+<div class="row">
+<div class="col-md-4">
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <img class="rounded-circle article-img" src="{{ user.profile.image.url }}" alt="{{default.JPG}}" style="width:150px; height:150px">
+</div>
+</div>
+ <div class="col-md-8">
+   <h1>{{ user.username }}</h1>
+   <br>
+   <a href="{% url 'profile' %}"><i>Edit Profile</i></a>
+ </div>
+</div>
+<div class="container">
+ <h4>{{ user.profile.phone}}</h4>
+ <p><h4>{{ user.profile.address }}</h4></p>
+ <p><h4>{{ user.profile.city }}</h4></p>
+ <p><h4>{{ user.profile.state }}</h4></p>
+ <p><h4>{{ user.profile.pincode }}</h4></p>
+</div>
+{% endblock %}
