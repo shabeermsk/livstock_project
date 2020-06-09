@@ -7,11 +7,14 @@ from seller.models import User
 from PIL import Image
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from gdstorage.storage import GoogleDriveStorage
 
+# Define Google Drive Storage
+gd_storage = GoogleDriveStorage()
 
 
 class Stock(models.Model):
-    image = models.ImageField(upload_to='stock_pics',blank=True)
+    image = models.ImageField(upload_to='stock_pics',blank=True,storage=gd_storage)
     name = models.CharField(max_length=256)
     user = models.ForeignKey('auth.user',related_name='stock',on_delete=models.CASCADE,default='')
     slug = models.SlugField(null=False,unique=True)

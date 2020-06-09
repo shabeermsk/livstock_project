@@ -11,9 +11,13 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import django_heroku
+from decouple import config
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+load_dotenv(os.path.join(BASE_DIR, '.env'))
 TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
 STATIC_DIR = os.path.join(BASE_DIR,'static')
 MEDIA_DIR = os.path.join(BASE_DIR,'media')
@@ -23,7 +27,8 @@ MEDIA_DIR = os.path.join(BASE_DIR,'media')
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '(+9=!sbehc&q6b=9d@*3)$+o!@ltl(xzn3fm+4%zqpv)$x2di1'
+SECRET_KEY = os.environ.get('SECRET_KEY')
+# SECRET_KEY=config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -42,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_cleanup.apps.CleanupConfig',
     'phone_field',
+    'gdstorage',
     'seller',
     'stock',
     'crispy_forms',
@@ -55,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'livestock.urls'
@@ -122,11 +129,17 @@ USE_L10N = True
 USE_TZ = True
 
 
+# GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE =os.path.join(BASE_DIR,'vaulted-bonsai-279707-99dbabf623ba.json')
+GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE=None
+GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE_CONTENTS=os.environ.get('GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE_CONTENTS')
+# GOOGLE_DRIVE_STORAGE_MEDIA_ROOT=
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS =[STATIC_DIR,]
+STATIC_ROOT = STATIC_DIR
 
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
@@ -150,3 +163,5 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 
 
 # AUTH_PROFILE_MODULE = "core.user"
+
+django_heroku.settings(locals())
