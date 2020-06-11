@@ -1,2 +1,2 @@
 # livstock_project
-The repository for Livestock Market website http://www.livestockmarket.herokuapp.com
+The source code of all the django apps for Livestock Market website http://www.livestockmarket.herokuapp.com
